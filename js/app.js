@@ -15,8 +15,10 @@ class UserInterface{
         document.querySelector("#total").textContent = presupuesto;  // <-- Los valores obtenidos los aplica a los parrafos
         document.querySelector("#restante").textContent = restante; 
     }
-    imprimirAlerta(){
-
+    imprimirAlerta(mensaje, tipo){
+        const divMensaje = document.createElement("div");
+        divMensaje.classList.add("text-center", "alert");
+        tipo === "error" ? divMensaje.classList.add("alert-danger") : divMensaje.classList.add("alert-success");
     }
 }
 
@@ -39,7 +41,7 @@ function agregarGasto(e){
     const nombre = document.querySelector("#gasto").value;
     const cantidad = document.querySelector("#cantidad").value;
     if(nombre === "" || cantidad === "" ){
-        UI.imprimirAlerta();
+        UI.imprimirAlerta("Ambos campos son obligatorios", "error");
     }
 }
 
